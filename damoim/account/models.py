@@ -42,7 +42,7 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser):
     id = models.AutoField(primary_key=True)
-    user_id = user_id= models.CharField(max_length=50)
+    user_id = models.CharField(max_length=50,unique=True)
     name = models.CharField(default='', max_length=10, null=False, blank=False)
     department = models.CharField(max_length=50)
     grade = models.CharField(max_length=10)
@@ -58,9 +58,9 @@ class User(AbstractBaseUser):
     objects = UserManager()
 
     # 사용자의 username field는 nickname으로 설정
-    USERNAME_FIELD = 'name'
+    USERNAME_FIELD = 'user_id'
     # 필수로 작성해야하는 field
-    REQUIRED_FIELDS = ['user_id','department','grade','phone','password', 'name']
+    REQUIRED_FIELDS = []
 
     def __str__(self):
         return self.user_id

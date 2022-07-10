@@ -20,10 +20,17 @@ class UserCreate(generics.CreateAPIView):
 def login(request):
     if request.method == 'POST':
         data = JSONParser().parse(request)
-        user = authenticate(user_id=data['user_id'],password=data['password'])
+        user = User.objects.get(user_id=data['user_id'])
+        #user = authenticate(user_id=data['user_id'], password=data['password'])
+
         
         if not user:
             return Response({'error': 'Invalid credentials'}, status=HTTP_404_NOT_FOUND)
         token, _ =Token.objects.get_or_create(user=user)
+        print(user.token)
+        user.token = token.key
+        print(user.token)
+        user.save()
+        
 
         return Response({'token':token.key},status=HTTP_200_OK)
