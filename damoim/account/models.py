@@ -47,7 +47,9 @@ class User(AbstractBaseUser):
     department = models.CharField(max_length=50)
     grade = models.CharField(max_length=10)
     phone= models.CharField(max_length=20)
-    
+    is_auth=models.BooleanField(default=False)
+    token = models.TextField(default='')
+
     # User 모델의 필수 field
     is_active = models.BooleanField(default=True)    
     is_admin = models.BooleanField(default=False)
@@ -61,5 +63,5 @@ class User(AbstractBaseUser):
     REQUIRED_FIELDS = ['user_id','department','grade','phone','password', 'name']
 
     def __str__(self):
-        return self.identity
+        return self.user_id
 
