@@ -1,11 +1,11 @@
 from django.db import router
 from django.urls import path, include
-from .views import AccountViewSet
+from . import views
 from rest_framework.routers import DefaultRouter
 
-router = DefaultRouter()
+# router = DefaultRouter()
 
-router.register('account',AccountViewSet)
+# router.register('account',AccountViewSet)
 
 # account_list = AccountViewSet.as_view({
     
@@ -16,7 +16,7 @@ router.register('account',AccountViewSet)
 # }) 
 
 urlpatterns = [
-    path('',include(router.urls)),
-    # path('blog/',blog_list),
-    # path('blog/<int:pk>/',blog_detail),
+    path('api-auth/',include('rest_framework.urls')),
+    path('signup/',views.UserCreate.as_view()),
+    path('login/',views.login)
 ]
