@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'post',
     'group',
     'account',
+    'rest_framework',
 
 ]
 
