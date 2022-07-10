@@ -1,0 +1,13 @@
+asgiref==3.2.3
+bcrypt==3.1.7
+Django==4.0.4
+django-allauth==0.50.0
+django-cors-headers==3.13.0
+django-rest-auth==0.9.5
+djangorestframework==3.13.1
+djangorestframework-jwt==1.11.0
+djangorestframework-simplejwt==5.2.0
+mysqlclient==2.1.0
+PyJWT==1.7.1
+PyMySQL==1.0.2
+gunicorn==20.1.0
