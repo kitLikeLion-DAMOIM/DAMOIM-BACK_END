@@ -1,5 +1,4 @@
 from django.db import models
-from sqlalchemy import ForeignKey
 from post.models import Post
 
 class Comment(models.Model):
