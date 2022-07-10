@@ -1,4 +1,4 @@
-asgiref==3.2.3
+asgiref==3.4.1
 bcrypt==3.1.7
 Django==4.0.4
 django-allauth==0.50.0
