@@ -1,6 +1,7 @@
 from django.db import models
 
 class Group(models.Model):
+    group_category=models.CharField(max_length=50,null=True)
     logo = models.TextField()
     group_name = models.CharField(max_length=50)
     profile_link = models.TextField()
