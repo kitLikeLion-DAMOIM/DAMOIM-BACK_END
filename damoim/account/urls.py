@@ -18,5 +18,6 @@ from rest_framework.routers import DefaultRouter
 urlpatterns = [
     path('api-auth/',include('rest_framework.urls')),
     path('signup/',views.UserCreate.as_view()),
-    path('login/',views.login)
+    path('login/',views.login),
+    path('login/check',views.check_login)
 ]

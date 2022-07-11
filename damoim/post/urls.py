@@ -22,4 +22,5 @@ urlpatterns = [
     path('',views.post_list),
     path('detail/<int:pk>/',views.post_detail),
     path('detail/<int:pk>/comment/',include('comment.urls')),
+    path('new',views.post_create)
 ]

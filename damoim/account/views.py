@@ -26,11 +26,25 @@ def login(request):
         
         if not user:
             return Response({'error': 'Invalid credentials'}, status=HTTP_404_NOT_FOUND)
+        elif user.password != data['password']:
+            return Response({'error': 'Invalid credentials'}, status=HTTP_404_NOT_FOUND)
         token, _ =Token.objects.get_or_create(user=user)
         print(user.token)
         user.token = token.key
         print(user.token)
         user.save()
         
-
         return Response({'token':token.key},status=HTTP_200_OK)
+
+@api_view(['GET'])
+@permission_classes((AllowAny,))
+def check_login(request):
+    if request.method == 'GET':
+        header = request.META['HTTP_AUTHORIZATION'][6:]
+        user = User.objects.get(token = header)
+
+        
+        if not user:
+            return Response({'is_login': 'false'}, status=HTTP_404_NOT_FOUND)
+        
+        return Response({'is_login':'true'},status=HTTP_200_OK)
